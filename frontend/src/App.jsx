@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './hooks/useAuth'
 import Layout from './components/layout/Layout'
+import Landing from './pages/auth/Landing'
 import Login from './pages/auth/Login'
 import Register from './pages/auth/Register'
 import Dashboard from './pages/dashboard/Dashboard'
@@ -28,20 +29,21 @@ export default function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/giris"   element={<Login />} />
-          <Route path="/kayit"   element={<Register />} />
-          <Route path="/" element={<PrivateRoute><Layout /></PrivateRoute>}>
-            <Route index              element={<Navigate to="/panel" replace />} />
-            <Route path="panel"       element={<Dashboard />} />
-            <Route path="rasyon"      element={<Rasyon />} />
-            <Route path="tartim"      element={<Tartim />} />
-            <Route path="gider"       element={<Gider />} />
-            <Route path="kar"         element={<Kar />} />
-            <Route path="raporlar"    element={<Raporlar />} />
-            <Route path="admin"       element={<AdminRoute><Admin /></AdminRoute>} />
-          </Route>
-          <Route path="*" element={<Navigate to="/panel" replace />} />
-        </Routes>
+  <Route path="/" element={<Landing />} />
+  <Route path="/giris" element={<Login />} />
+  <Route path="/kayit" element={<Register />} />
+  <Route path="/app" element={<PrivateRoute><Layout /></PrivateRoute>}>
+    <Route index element={<Navigate to="/app/panel" replace />} />
+    <Route path="panel" element={<Dashboard />} />
+    <Route path="rasyon" element={<Rasyon />} />
+    <Route path="tartim" element={<Tartim />} />
+    <Route path="gider" element={<Gider />} />
+    <Route path="kar" element={<Kar />} />
+    <Route path="raporlar" element={<Raporlar />} />
+    <Route path="admin" element={<AdminRoute><Admin /></AdminRoute>} />
+  </Route>
+  <Route path="*" element={<Navigate to="/" replace />} />
+</Routes>
       </BrowserRouter>
     </AuthProvider>
   )
