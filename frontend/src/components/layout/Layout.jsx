@@ -3,12 +3,12 @@ import { useAuth } from '../../hooks/useAuth'
 import { useState } from 'react'
 
 const navItems = [
-  { to: '/panel',    icon: '🏠', label: 'Genel Durum'   },
-  { to: '/rasyon',   icon: '🐄', label: 'Rasyon'         },
-  { to: '/tartim',   icon: '⚖️', label: 'Tartım Kayıtları'},
-  { to: '/gider',    icon: '🧾', label: 'Gider Defteri'  },
-  { to: '/kar',      icon: '📈', label: 'Kâr Analizi'    },
-  { to: '/raporlar', icon: '📄', label: 'Raporlar'        },
+  { to: '/app/panel',    icon: '🏠', label: 'Genel Durum'    },
+  { to: '/app/rasyon',   icon: '🐄', label: 'Rasyon'          },
+  { to: '/app/tartim',   icon: '⚖️', label: 'Tartım Kayıtları' },
+  { to: '/app/gider',    icon: '🧾', label: 'Gider Defteri'   },
+  { to: '/app/kar',      icon: '📈', label: 'Kâr Analizi'     },
+  { to: '/app/raporlar', icon: '📄', label: 'Raporlar'         },
 ]
 
 export default function Layout() {
