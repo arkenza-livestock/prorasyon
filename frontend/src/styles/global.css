@@ -1,0 +1,151 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-900: #163a27;
+  --green-800: #1f5130;
+  --green-700: #22663a;
+  --green-600: #2a7a46;
+  --green-500: #3a9a58;
+  --green-100: #e4f3e0;
+  --green-50:  #f2f9ef;
+  --amber:     #d97706;
+  --red:       #dc2626;
+  --blue:      #2563eb;
+  --gray-900:  #111827;
+  --gray-700:  #374151;
+  --gray-500:  #6b7280;
+  --gray-300:  #d1d5db;
+  --gray-100:  #f3f4f6;
+  --white:     #ffffff;
+  --radius-sm: 8px;
+  --radius:    14px;
+  --radius-lg: 22px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.06);
+  --shadow:    0 4px 16px rgba(0,0,0,.08);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,.10);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #eef2e8;
+  color: var(--gray-900);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+#root { min-height: 100vh; }
+
+/* ── Typography ── */
+h1 { font-size: 1.75rem; font-weight: 800; color: var(--green-900); }
+h2 { font-size: 1.25rem; font-weight: 700; color: var(--green-800); }
+h3 { font-size: 1rem;    font-weight: 700; color: var(--green-800); }
+
+/* ── Cards ── */
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid #e0ecd9;
+  margin-bottom: 16px;
+}
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: none; border-radius: var(--radius);
+  padding: 9px 16px;
+  font-size: .83rem; font-weight: 700;
+  cursor: pointer; transition: .15s;
+  white-space: nowrap;
+}
+.btn-primary   { background: var(--green-700); color: #fff; }
+.btn-primary:hover { background: var(--green-800); }
+.btn-secondary { background: var(--green-50); color: var(--green-800); border: 1px solid #d1dec7; }
+.btn-secondary:hover { background: var(--green-100); }
+.btn-danger    { background: var(--red); color: #fff; }
+.btn-danger:hover { opacity: .88; }
+.btn-amber     { background: var(--amber); color: #fff; }
+.btn-sm        { padding: 6px 11px; font-size: .76rem; }
+.btn:disabled  { opacity: .5; cursor: not-allowed; }
+
+/* ── Form elements ── */
+.form-group { margin-bottom: 14px; }
+.form-group label {
+  display: block; font-size: .72rem; font-weight: 700;
+  color: var(--gray-500); text-transform: uppercase;
+  letter-spacing: .04em; margin-bottom: 5px;
+}
+input, select, textarea {
+  width: 100%; border-radius: var(--radius-sm);
+  padding: 9px 13px; border: 1px solid var(--gray-300);
+  background: var(--white); font-size: .85rem;
+  font-family: inherit; transition: border-color .15s;
+  outline: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--green-600); }
+input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--green-700); }
+
+/* ── Tables ── */
+.table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid #e0ecd9; }
+table { width: 100%; border-collapse: collapse; font-size: .8rem; background: #fff; }
+th { background: #eef3e9; padding: 11px 10px; color: var(--green-800); font-weight: 800; text-align: left; white-space: nowrap; }
+td { padding: 9px 10px; border-bottom: 1px solid #e8f0e3; vertical-align: middle; }
+tbody tr:hover { background: #f7fbf4; }
+tfoot td { background: #f0f5ec; font-weight: 700; }
+
+/* ── Metric cards ── */
+.metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 14px 0; }
+.metric-box { background: #f8faf4; border-radius: var(--radius); padding: 14px; text-align: center; border: 1px solid #dde8d4; }
+.metric-label { font-size: .68rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: .04em; }
+.metric-value { font-size: 1.35rem; font-weight: 800; color: var(--green-800); margin-top: 4px; }
+
+/* ── Pills / Badges ── */
+.pill { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 999px; font-weight: 700; font-size: .72rem; }
+.pill-ok   { background: #dcfce7; color: #166534; }
+.pill-warn { background: #ffedd5; color: #9a3412; }
+.pill-bad  { background: #fee2e2; color: #991b1b; }
+.pill-info { background: #dbeafe; color: #1e40af; }
+
+/* ── Alert ── */
+.alert { border-radius: var(--radius); padding: 11px 14px; margin: 12px 0; font-size: .8rem; }
+.alert-info    { background: #eff6ff; border-left: 4px solid var(--blue); color: #1e40af; }
+.alert-success { background: #f0fdf4; border-left: 4px solid #16a34a; color: #14532d; }
+.alert-warn    { background: #fffbeb; border-left: 4px solid var(--amber); color: #92400e; }
+.alert-danger  { background: #fef2f2; border-left: 4px solid var(--red); color: #7f1d1d; }
+
+/* ── Input row ── */
+.input-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 16px; align-items: end; }
+
+/* ── Toast ── */
+.toast {
+  position: fixed; top: 18px; right: 18px; z-index: 9999;
+  background: var(--green-800); color: #fff;
+  padding: 10px 16px; border-radius: var(--radius);
+  font-size: .82rem; font-weight: 700;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px); opacity: 0;
+  transition: .22s; pointer-events: none;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ── Period buttons ── */
+.period-group { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.period-btn { flex: 1; min-width: 120px; background: #f0ede7; border: 1px solid var(--gray-300); border-radius: 40px; padding: 9px 16px; font-weight: 700; font-size: .82rem; cursor: pointer; transition: .15s; text-align: center; }
+.period-btn.active { background: var(--green-700); color: #fff; border-color: var(--green-700); }
+.period-btn:hover:not(.active) { background: var(--green-100); }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c8d9c0; border-radius: 3px; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .metric-grid { grid-template-columns: repeat(2, 1fr); }
+  .input-row   { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .metric-grid { grid-template-columns: 1fr; }
+}
