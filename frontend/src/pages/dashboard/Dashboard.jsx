@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useFarm } from '../../hooks/useFarm'
+import { FarmProvider, useFarm } from '../../hooks/useFarm'
 import { useAuth } from '../../hooks/useAuth'
-import { FarmProvider } from '../../hooks/useFarm'
 import { supabase } from '../../lib/supabase'
 import { formatTL, fmt, estimateFeedCost, getPeriodByDay, getDayFromStart } from '../../lib/utils'
 
@@ -39,29 +38,28 @@ function DashboardInner() {
 
   const periodLabels = { starter: 'Başlangıç (0-60 gün)', growth: 'Gelişme (60-150 gün)', finish: 'Bitiş (150-240 gün)' }
 
+  const daysLeft = profile?.plan_expires_at
+    ? Math.ceil((new Date(profile.plan_expires_at) - new Date()) / 86400000)
+    : null
+
   return (
     <div>
       <div style={{ marginBottom: 20 }}>
         <h1>Hoş Geldiniz, {profile?.full_name || 'Kullanıcı'} 👋</h1>
-        <p style={{ color: '#6b7280', marginTop: 4 }}>
-  {profile?.company_name || ''} • {selectedFarm?.name} / {selectedGroup?.name}
-  {' '}•{' '}
-  {profile?.plan === 'pro' && profile?.plan_expires_at ? (
-    <span style={{
-      background: Math.ceil((new Date(profile.plan_expires_at) - new Date()) / 86400000) <= 7 ? '#fee2e2' : '#dcfce7',
-      color: Math.ceil((new Date(profile.plan_expires_at) - new Date()) / 86400000) <= 7 ? '#dc2626' : '#15803d',
-      padding: '2px 10px', borderRadius: 999, fontSize: '.78rem', fontWeight: 700
-    }}>
-      🚀 Pro — {Math.ceil((new Date(profile.plan_expires_at) - new Date()) / 86400000)} gün kaldı
-    </span>
-  ) : (
-    <span style={{ background: '#fef9c3', color: '#92400e', padding: '2px 10px', borderRadius: 999, fontSize: '.78rem', fontWeight: 700 }}>
-      Deneme Hesabı
-    </span>
-  )}
-</p>
+        <p style={{ color: '#6b7280', marginTop: 4, display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+          <span>{profile?.company_name || ''} • {selectedFarm?.name} / {selectedGroup?.name}</span>
+          {profile?.plan === 'pro' && daysLeft !== null ? (
+            <span style={{ background: daysLeft <= 7 ? '#fee2e2' : '#dcfce7', color: daysLeft <= 7 ? '#dc2626' : '#15803d', padding: '2px 10px', borderRadius: 999, fontSize: '.78rem', fontWeight: 700 }}>
+              🚀 Pro — {daysLeft} gün kaldı
+            </span>
+          ) : (
+            <span style={{ background: '#fef9c3', color: '#92400e', padding: '2px 10px', borderRadius: 999, fontSize: '.78rem', fontWeight: 700 }}>
+              Deneme Hesabı
+            </span>
+          )}
+        </p>
+      </div>
 
-      {/* KPI Cards */}
       <div className="metric-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))' }}>
         <div className="metric-box">
           <div className="metric-label">Tahmini Net Kâr</div>
@@ -91,24 +89,16 @@ function DashboardInner() {
         </div>
       </div>
 
-      {/* Alerts */}
       {lastGain !== null && lastGain < 1000 && (
-        <div className="alert alert-danger">
-          ⚠️ Son tartıda günlük canlı ağırlık artışı <strong>{fmt(lastGain, 0)} g/gün</strong> — hedefin altında. Rasyon sayfasından yem oranlarını kontrol edin.
-        </div>
+        <div className="alert alert-danger">⚠️ Son tartıda günlük canlı ağırlık artışı <strong>{fmt(lastGain, 0)} g/gün</strong> — hedefin altında.</div>
       )}
       {weighings.length < 2 && (
-        <div className="alert alert-info">
-          ℹ️ AI değerlendirmesi için en az 2 tartı kaydı gerekli. Tartım sayfasından kayıt ekleyin.
-        </div>
+        <div className="alert alert-info">ℹ️ AI değerlendirmesi için en az 2 tartı kaydı gerekli.</div>
       )}
       {day !== null && day > 240 && (
-        <div className="alert alert-warn">
-          ⏰ Besi süresi <strong>{fmt(day, 0)} gün</strong> — standart 240 günü geçti. Satış planlaması yapmanız önerilir.
-        </div>
+        <div className="alert alert-warn">⏰ Besi süresi <strong>{fmt(day, 0)} gün</strong> — standart 240 günü geçti.</div>
       )}
 
-      {/* Farm summary */}
       <div className="card">
         <h3 style={{ marginBottom: 14 }}>📊 Tüm Çiftlikler Özeti</h3>
         <div className="table-wrap">
