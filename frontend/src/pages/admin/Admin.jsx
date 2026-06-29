@@ -30,10 +30,19 @@ export default function Admin() {
     await loadUsers()
   }
 
-  async function deleteUser(userId, email) {
-    if (!confirm(`"${email}" kullanıcısı silinsin mi? Bu işlem geri alınamaz.`)) return
-    await supabase.from('profiles').delete().eq('id', userId)
+  async function startPro(userId, email) {
+    if (!confirm(`"${email}" kullanıcısına 30 günlük Pro başlatılsın mı?`)) return
+    const expires = new Date(Date.now() + 30 * 86400000).toISOString()
+    await supabase.from('profiles').update({ plan: 'pro', plan_expires_at: expires }).eq('id', userId)
+    await supabase.functions.invoke('send-mail', {
+      body: {
+        to: email,
+        subject: 'ProRasyon Pro Planınız Başladı!',
+        html: `<h2>Merhaba!</h2><p>30 günlük Pro planınız başarıyla başlatıldı.</p><p>Süreniz: <strong>${new Date(expires).toLocaleDateString('tr-TR')}</strong> tarihinde dolacak.</p><p><a href="https://prorasyon.com.tr/app/panel">Uygulamaya Git →</a></p>`
+      }
+    })
     await loadUsers()
+    alert('Pro plan başlatıldı ve mail gönderildi!')
   }
 
   const filtered = users.filter(u =>
@@ -122,14 +131,19 @@ export default function Admin() {
                             <option value="user">Kullanıcı</option>
                             <option value="admin">Admin</option>
                           </select>
-                          <button className="btn btn-secondary btn-sm"
+                         <button className="btn btn-secondary btn-sm"
                             onClick={() => { setMailModal(u); setMailText('') }}>
                             ✉️
-                          </button>
-                          <button className="btn btn-danger btn-sm"
-                            onClick={() => deleteUser(u.id, u.email)}>
-                            🗑
-                          </button>
+</button>
+<button className="btn btn-primary btn-sm"
+  onClick={() => startPro(u.id, u.email)}
+  style={{ background: '#16a34a' }}>
+  🚀 Pro Başlat
+</button>
+<button className="btn btn-danger btn-sm"
+  onClick={() => deleteUser(u.id, u.email)}>
+  🗑
+</button>
                         </div>
                       </td>
                     </tr>
