@@ -43,8 +43,23 @@ function DashboardInner() {
     <div>
       <div style={{ marginBottom: 20 }}>
         <h1>Hoş Geldiniz, {profile?.full_name || 'Kullanıcı'} 👋</h1>
-        <p style={{ color: '#6b7280', marginTop: 4 }}>{profile?.company_name || ''} • {selectedFarm?.name} / {selectedGroup?.name}</p>
-      </div>
+        <p style={{ color: '#6b7280', marginTop: 4 }}>
+  {profile?.company_name || ''} • {selectedFarm?.name} / {selectedGroup?.name}
+  {' '}•{' '}
+  {profile?.plan === 'pro' && profile?.plan_expires_at ? (
+    <span style={{
+      background: Math.ceil((new Date(profile.plan_expires_at) - new Date()) / 86400000) <= 7 ? '#fee2e2' : '#dcfce7',
+      color: Math.ceil((new Date(profile.plan_expires_at) - new Date()) / 86400000) <= 7 ? '#dc2626' : '#15803d',
+      padding: '2px 10px', borderRadius: 999, fontSize: '.78rem', fontWeight: 700
+    }}>
+      🚀 Pro — {Math.ceil((new Date(profile.plan_expires_at) - new Date()) / 86400000)} gün kaldı
+    </span>
+  ) : (
+    <span style={{ background: '#fef9c3', color: '#92400e', padding: '2px 10px', borderRadius: 999, fontSize: '.78rem', fontWeight: 700 }}>
+      Deneme Hesabı
+    </span>
+  )}
+</p>
 
       {/* KPI Cards */}
       <div className="metric-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))' }}>
