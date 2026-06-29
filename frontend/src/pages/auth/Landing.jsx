@@ -14,7 +14,7 @@ export default function Landing() {
           <a href="#hakkinda" style={{color:'rgba(255,255,255,0.7)',textDecoration:'none',fontSize:'.85rem',fontWeight:600}}>Hakkimizda</a>
           <a href="#iletisim" style={{color:'rgba(255,255,255,0.7)',textDecoration:'none',fontSize:'.85rem',fontWeight:600}}>Iletisim</a>
           <Link to="/giris" style={{color:'rgba(255,255,255,0.8)',textDecoration:'none',fontSize:'0.9rem',fontWeight:600,padding:'8px 16px'}}>Giris Yap</Link>
-          <Link to="/kayit" style={{background:'#22c55e',color:'#fff',textDecoration:'none',fontSize:'0.9rem',fontWeight:700,padding:'10px 22px',borderRadius:12}}>Hemen Basla</Link>
+          <Link to="/kayit" style={{background:'#22c55e',color:'#fff',textDecoration:'none',fontSize:'0.9rem',fontWeight:700,padding:'10px 22px',borderRadius:12}}>Uye Ol</Link>
         </div>
       </nav>
 
@@ -32,7 +32,7 @@ export default function Landing() {
             Rasyon hesaplama, tartim takibi, gider defteri ve kar analizi -- hepsi tek platformda.
           </p>
           <div style={{display:'flex',gap:14,justifyContent:'center',flexWrap:'wrap'}}>
-            <Link to="/kayit" style={{display:'inline-flex',alignItems:'center',gap:8,background:'#22c55e',color:'#fff',textDecoration:'none',fontSize:'1rem',fontWeight:800,padding:'16px 32px',borderRadius:14,boxShadow:'0 8px 30px rgba(34,197,94,0.35)'}}>Hemen Basla</Link>
+            <Link to="/kayit" style={{display:'inline-flex',alignItems:'center',gap:8,background:'#22c55e',color:'#fff',textDecoration:'none',fontSize:'1rem',fontWeight:800,padding:'16px 32px',borderRadius:14,boxShadow:'0 8px 30px rgba(34,197,94,0.35)'}}>Uye Ol</Link>
             <Link to="/giris" style={{display:'inline-flex',alignItems:'center',gap:8,background:'rgba(255,255,255,0.08)',color:'#fff',textDecoration:'none',fontSize:'1rem',fontWeight:700,padding:'16px 32px',borderRadius:14,border:'1px solid rgba(255,255,255,0.15)'}}>Giris Yap</Link>
           </div>
           <div style={{display:'flex',justifyContent:'center',gap:48,marginTop:64,flexWrap:'wrap'}}>

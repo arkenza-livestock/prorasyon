@@ -25,22 +25,13 @@ export function AuthProvider({ children }) {
   }, [])
 
   async function fetchProfile(userId) {
-    try {
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('id', userId)
-        .single()
-      if (error) {
-        console.error('Profile fetch error:', error)
-      } else {
-        setProfile(data)
-      }
-    } catch (err) {
-      console.error('fetchProfile hata:', err)
-    } finally {
-      setLoading(false)
-    }
+    const { data } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('id', userId)
+      .single()
+    setProfile(data)
+    setLoading(false)
   }
 
   async function signIn(email, password) {
@@ -48,11 +39,11 @@ export function AuthProvider({ children }) {
     if (error) throw error
   }
 
-  async function signUp(email, password, fullName, companyName) {
+  async function signUp(email, password, fullName, companyName, phone) {
     const { error } = await supabase.auth.signUp({
       email,
       password,
-      options: { data: { full_name: fullName, company_name: companyName } }
+      options: { data: { full_name: fullName, company_name: companyName, phone: phone } }
     })
     if (error) throw error
   }
