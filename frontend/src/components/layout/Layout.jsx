@@ -61,7 +61,7 @@ export default function Layout() {
           ))}
 
           {profile?.role === 'admin' && (
-            <NavLink to="/admin"
+            <NavLink to="/app/admin"
               style={({ isActive }) => ({
                 display: 'flex', alignItems: 'center', gap: 10,
                 padding: '10px 12px', borderRadius: 12,
