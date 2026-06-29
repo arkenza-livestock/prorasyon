@@ -12,7 +12,7 @@ export default function Landing() {
         </div>
         <div style={{display:'flex',gap:12,alignItems:'center'}}>
           <Link to="/giris" style={{color:'rgba(255,255,255,0.8)',textDecoration:'none',fontSize:'0.9rem',fontWeight:600,padding:'8px 16px'}}>Giriş Yap</Link>
-          <Link to="/kayit" style={{background:'#22c55e',color:'#fff',textDecoration:'none',fontSize:'0.9rem',fontWeight:700,padding:'10px 22px',borderRadius:12}}>Ücretsiz Başla</Link>
+          <Link to="/kayit" style={{background:'#22c55e',color:'#fff',textDecoration:'none',fontSize:'0.9rem',fontWeight:700,padding:'10px 22px',borderRadius:12}}>Hemen Başla</Link>
         </div>
       </nav>
 
@@ -30,7 +30,7 @@ export default function Landing() {
             Rasyon hesaplama, tartım takibi, gider defteri ve kâr analizi — hepsi tek platformda. Türkiye'nin çiftçileri için geliştirildi.
           </p>
           <div style={{display:'flex',gap:14,justifyContent:'center',flexWrap:'wrap'}}>
-            <Link to="/kayit" style={{display:'inline-flex',alignItems:'center',gap:8,background:'#22c55e',color:'#fff',textDecoration:'none',fontSize:'1rem',fontWeight:800,padding:'16px 32px',borderRadius:14,boxShadow:'0 8px 30px rgba(34,197,94,0.35)'}}>Hemen Başla — Ücretsiz →</Link>
+            <Link to="/kayit" style={{display:'inline-flex',alignItems:'center',gap:8,background:'#22c55e',color:'#fff',textDecoration:'none',fontSize:'1rem',fontWeight:800,padding:'16px 32px',borderRadius:14,boxShadow:'0 8px 30px rgba(34,197,94,0.35)'}}>Hemen Başla →</Link>
             <Link to="/giris" style={{display:'inline-flex',alignItems:'center',gap:8,background:'rgba(255,255,255,0.08)',color:'#fff',textDecoration:'none',fontSize:'1rem',fontWeight:700,padding:'16px 32px',borderRadius:14,border:'1px solid rgba(255,255,255,0.15)'}}>Giriş Yap</Link>
           </div>
           <div style={{display:'flex',justifyContent:'center',gap:48,marginTop:64,flexWrap:'wrap'}}>
@@ -78,7 +78,7 @@ export default function Landing() {
               {icon:'🇹🇷',title:'Tamamen Türkçe',desc:'Arayüzden raporlara kadar her şey Türkçe. TL cinsinden hesaplama.'},
               {icon:'📱',title:'Her Cihazda Çalışır',desc:'Telefon, tablet veya bilgisayardan erişin. İnternet olan her yerde kullanın.'},
               {icon:'🔒',title:'Güvenli Veri',desc:'Verileriniz şifreli olarak bulutta saklanır. Sadece siz erişirsiniz.'},
-              {icon:'💰',title:'Başlangıç Ücretsiz',desc:'Hesap açın, hemen kullanmaya başlayın. Kredi kartı gerekmez.'},
+              {icon:'💰',title:'Hızlı Kurulum',desc:'Hesap açın, hemen kullanmaya başlayın. Kredi kartı gerekmez.'},
             ].map(f=>(
               <div key={f.title} style={{background:'rgba(255,255,255,0.05)',borderRadius:18,padding:'28px 22px',border:'1px solid rgba(255,255,255,0.08)'}}>
                 <div style={{fontSize:'2rem',marginBottom:14}}>{f.icon}</div>
@@ -94,7 +94,7 @@ export default function Landing() {
         <div style={{maxWidth:700,margin:'0 auto'}}>
           <h2 style={{fontSize:'clamp(1.8rem,3vw,2.8rem)',fontWeight:900,color:'#fff',lineHeight:1.2,marginBottom:20}}>Çiftliğinizi dijitale taşımaya hazır mısınız?</h2>
           <p style={{color:'rgba(255,255,255,0.7)',fontSize:'1.05rem',marginBottom:36,lineHeight:1.7}}>Dakikalar içinde hesap açın. Kredi kartı gerekmez.</p>
-          <Link to="/kayit" style={{display:'inline-flex',alignItems:'center',gap:8,background:'#fff',color:'#15803d',textDecoration:'none',fontSize:'1.05rem',fontWeight:800,padding:'18px 40px',borderRadius:14,boxShadow:'0 8px 30px rgba(0,0,0,0.2)'}}>Ücretsiz Hesap Oluştur →</Link>
+          <Link to="/kayit" style={{display:'inline-flex',alignItems:'center',gap:8,background:'#fff',color:'#15803d',textDecoration:'none',fontSize:'1.05rem',fontWeight:800,padding:'18px 40px',borderRadius:14,boxShadow:'0 8px 30px rgba(0,0,0,0.2)'}}>Hesap Oluştur →</Link>
         </div>
       </div>
 
