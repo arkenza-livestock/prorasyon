@@ -16,7 +16,7 @@ export default function Login() {
     setLoading(true)
     try {
       await signIn(email, password)
-      navigate('/panel')
+      navigate('/app/panel')
     } catch (err) {
       setError('E-posta veya şifre hatalı.')
     } finally {
