@@ -11,6 +11,7 @@ import Gider from './pages/gider/Gider'
 import Kar from './pages/kar/Kar'
 import Raporlar from './pages/raporlar/Raporlar'
 import Admin from './pages/admin/Admin'
+import Odeme from './pages/odeme/Odeme'
 
 function PrivateRoute({ children }) {
   const { user, loading } = useAuth()
@@ -29,6 +30,7 @@ export default function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+<Route path="/odeme" element={<Odeme />} />
   <Route path="/" element={<Landing />} />
   <Route path="/giris" element={<Login />} />
   <Route path="/kayit" element={<Register />} />
