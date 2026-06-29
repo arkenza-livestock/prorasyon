@@ -98,6 +98,9 @@ async function handleGoogle() {
 
   return (
     <div style={s.page}>
+      <Link to="/" style={{ position: 'absolute', top: 20, left: 20, color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: '.85rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 6 }}>
+        ← Ana Sayfa
+      </Link>
       <div style={s.box}>
         <div style={s.logo}>🌾</div>
         <h1 style={s.title}>ProRasyon</h1>
@@ -140,11 +143,12 @@ async function handleGoogle() {
   )
 }
 
-const s = {
-  page: { minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'linear-gradient(135deg,#eef2e8,#d4e8ca)', padding: 16 },
-  box: { background: '#fff', borderRadius: 24, padding: '36px 32px', width: '100%', maxWidth: 400, boxShadow: '0 20px 60px rgba(0,0,0,.12)', textAlign: 'center' },
-  logo: { fontSize: '2.8rem', marginBottom: 8 },
-  title: { fontSize: '1.8rem', fontWeight: 900, color: '#163a27' },
-  sub: { color: '#6b7280', fontSize: '.9rem', marginTop: 4 },
-  footer: { marginTop: 20, color: '#6b7280', fontSize: '.85rem' },
-}
+page: { 
+  minHeight: '100vh', 
+  display: 'flex', 
+  alignItems: 'center', 
+  justifyContent: 'center',
+  background: 'linear-gradient(135deg, #0a1f0a 0%, #1a3d1a 50%, #0f2d0f 100%)',
+  padding: 16,
+  position: 'relative',
+},
