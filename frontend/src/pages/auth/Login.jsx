@@ -26,7 +26,15 @@ export default function Login() {
       setLoading(false)
     }
   }
-
+async function handleGoogle() {
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${window.location.origin}/app/panel`
+    }
+  })
+  if (error) setError('Google ile giriş başarısız.')
+}
   async function handleForgot(e) {
     e.preventDefault()
     setError('')
@@ -117,6 +125,12 @@ export default function Login() {
             {loading ? 'Giriş yapılıyor...' : 'Giriş Yap'}
           </button>
         </form>
+<div style={{ margin: '16px 0', textAlign: 'center', color: '#9ca3af', fontSize: '.8rem' }}>— veya —</div>
+<button type="button" onClick={handleGoogle}
+  style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, padding: '12px', borderRadius: 12, border: '1px solid #d1d5db', background: '#fff', cursor: 'pointer', fontSize: '.9rem', fontWeight: 700, color: '#374151' }}>
+  <img src="https://www.google.com/favicon.ico" width={18} height={18} alt="Google" />
+  Google ile Giriş Yap
+</button>
         <p style={s.footer}>
           Hesabınız yok mu?{' '}
           <Link to="/kayit" style={{ color: '#22663a', fontWeight: 700 }}>Kayıt Ol</Link>
