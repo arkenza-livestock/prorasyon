@@ -30,7 +30,7 @@ export default function Login() {
   async function handleGoogle() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: `${window.location.origin}/app/panel` }
+      options: { redirectTo: `https://prorasyon.vercel.app/app/panel` }
     })
     if (error) setError('Google ile giriş başarısız.')
   }
